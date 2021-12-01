@@ -15,6 +15,8 @@ export default function Home() {
    * to create a gallery of ItemCard components
   */
 
+  const { items, setItems } = useItems()
+
   const addToCart = (itemName) => {
     /* TODO: Write function that updates the
      * user context object's cart 
@@ -36,6 +38,7 @@ export default function Home() {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
+          <h2>{user.cart.length}</h2>
         </div>
         </Link>
         </div>
@@ -43,8 +46,11 @@ export default function Home() {
           {/* TODO: Map through the items in context 
           * to display an ItemCard with the data for each
           */
+         items.map((item) => (
+          <ItemCard name = {item.name} img = {item.img} stock = {item.stock} price = {item.price} />
+         ))
           }
-          <p>plants will go here</p>
+          <p></p>
         </div>
       </main>
     </div>
